@@ -5,7 +5,7 @@ use crate::server::ProducesTickets;
 
 use ring::aead;
 use std::mem;
-use std::sync::{SgxMutex, Arc};
+use std::sync::{Mutex, Arc};
 use std::time;
 
 /// The timebase for expiring and rolling tickets and ticketing
@@ -125,7 +125,7 @@ struct TicketSwitcherState {
 pub struct TicketSwitcher {
     generator: fn() -> Box<dyn ProducesTickets>,
     lifetime: u32,
-    state: SgxMutex<TicketSwitcherState>,
+    state: Mutex<TicketSwitcherState>,
 }
 
 impl TicketSwitcher {
@@ -137,7 +137,7 @@ impl TicketSwitcher {
         TicketSwitcher {
             generator,
             lifetime,
-            state: SgxMutex::new(TicketSwitcherState {
+            state: Mutex::new(TicketSwitcherState {
                 current: generator(),
                 previous: None,
                 next_switch_time: timebase() + u64::from(lifetime),
