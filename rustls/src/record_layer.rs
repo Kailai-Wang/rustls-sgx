@@ -30,7 +30,7 @@ pub struct RecordLayer {
 impl RecordLayer {
     pub fn new() -> RecordLayer {
         RecordLayer {
-            message_encrypter: <dyn MessageDecrypter>::invalid(),
+            message_encrypter: <dyn MessageEncrypter>::invalid(),
             message_decrypter: <dyn MessageDecrypter>::invalid(),
             write_seq: 0,
             read_seq: 0,
