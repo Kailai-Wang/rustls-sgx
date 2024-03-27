@@ -17,7 +17,7 @@ log = { git = "https://github.com/Kailai-Wang/log-sgx", branch = "sgx-sdk-2.0.0"
 ring = { git = "https://github.com/mesalock-linux/ring-sgx", tag = "v0.16.5" }
 sct = { git = "https://github.com/mesalock-linux/sct.rs", branch = "mesalock_sgx" }
 webpki = { git = "https://github.com/mesalock-linux/webpki", branch = "mesalock_sgx" }
-sgx_tstd = { git = "https://github.com/apache/incubator-teaclave-sgx-sdk", branch = "v2.0.0-preview-11-17", optional = true }
+sgx_tstd = { git = "https://github.com/apache/incubator-teaclave-sgx-sdk", branch = "v2.0.0-preview", optional = true }
 
 [features]
 default = ["logging", "mesalock_sgx"]
